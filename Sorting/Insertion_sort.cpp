@@ -1,15 +1,15 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-void selectionSort(int arr[],int size){
-    for (int i=0;i<size-1;i++){
-        int mini =i;    //let consider minimum value at i
-        for(int j=i+1;j<size;j++){
-            if(arr[j]<arr[mini])    mini=j;
+void insertionSort(int arr[],int n){
+    for(int i=0;i<n;i++){
+        int j=i;
+        while (j>0 && arr[j-1]>arr[j]){
+            int temp = arr[j];
+            arr[j]=arr[j-1];
+            arr[j-1]=temp;
+            j--;
         }
-        int temp=arr[i];
-        arr[i]=arr[mini];
-        arr[mini]=temp;
     }
 }
 
@@ -20,8 +20,8 @@ int main(){
     for(int i=0;i<size;i++){
         cin>>arr[i];    //input array elements
     }
-    //sorting algo
-    selectionSort(arr,size);
+    //insertion sort algo
+    insertionSort(arr,size);
 
     for(int i=0;i<size;i++){
         cout<<arr[i]<<" ";  //print sorted array
